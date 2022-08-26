@@ -1,13 +1,13 @@
-module.exports = (Sequelize, DataTypes) => {
-    const Category = Sequelize.define("Category", {
+module.exports = (sequelize, DataTypes) => {
+    const Category = sequelize.define("Category", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
           },
           name: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
           } 
     }); 
