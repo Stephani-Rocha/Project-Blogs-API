@@ -14,7 +14,7 @@ const createUser = async ({ displayName, email, password, image }) => {
     const payload = {
         displayName, email, password, image,
     };
-    
+
     const token = jwt.sign(payload, JWT_SECRET, {
         expiresIn: '1d',    
     });
@@ -22,6 +22,12 @@ const createUser = async ({ displayName, email, password, image }) => {
     return token;
 };
 
+const getUser = async () => {
+    const result = await User.findAll({ attributes: { exclude: ['password'] } });
+    return result;
+};
+
 module.exports = {
     createUser,
+    getUser,
 };
