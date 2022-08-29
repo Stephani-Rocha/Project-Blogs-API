@@ -29,7 +29,23 @@ const validateData = (req, res, next) => {
   next();
 };
 
+const validateName = (req, res, next) => {
+  const schema = Joi.object({
+    name: Joi.string().required().messages({
+      'string.empty': '400|"name" is required',
+      'any.required': '400|"name" is required',
+    }),
+  });
+  const { error } = schema.validate(req.body);
+  if (error) {
+    const [status, message] = error.message.split('|');
+    return res.status(Number(status)).json({ message });
+  }
+  next();
+};
+
 module.exports = {
   emptyError,
   validateData,
+  validateName,
 };
