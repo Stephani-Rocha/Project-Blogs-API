@@ -3,6 +3,7 @@ const app = require('./api');
 const loginController = require('./controllers/loginController');
 const userController = require('./controllers/userController');
 const categoriesController = require('./controllers/categoriesController');
+const postController = require('./controllers/postController');
 const loginError = require('./middlewares/erros');
 const Token = require('./middlewares/validateToken');
 
@@ -21,5 +22,6 @@ app.get('/user/:id', Token.validateToken, userController.getUserId);
 app.post('/categories', Token.validateToken, loginError.validateName,
 categoriesController.createCategory);
 app.get('/categories', Token.validateToken, categoriesController.getAllCategories);
+app.get('/post', Token.validateToken, postController.getAllPosts);
 
 app.listen(port, () => console.log('ouvindo porta', port));
