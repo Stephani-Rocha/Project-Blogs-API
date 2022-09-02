@@ -1,4 +1,4 @@
-const { BlogPost, User, Category } = require('../database/models');
+const { BlogPost, User, Category, PostCategory, sequelize } = require('../database/models');
 
 const getAllPosts = async () => {
     const result = await BlogPost.findAll({
@@ -42,7 +42,24 @@ const getPostId = async (id) => {
     
     return result;
 };
+
+const createPost = async ({ title, content, categoryIds, id }) => {
+    const transactionResult = await sequelize.transaction(async (transaction) => {    
+    const post = await BlogPost.create({ title, content, userId: id });
+    
+        const xablau = categoryIds.map((number) => ({ postId: post.id, categoryId: number }));
+    
+        await PostCategory.bulkCreate(
+          xablau,
+          { transaction },
+        );
+        return post;
+      }); 
+      return transactionResult;
+    };
+
 module.exports = {
     getAllPosts,
     getPostId,
+    createPost,
 };

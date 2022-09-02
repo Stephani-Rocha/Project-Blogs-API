@@ -24,5 +24,7 @@ categoriesController.createCategory);
 app.get('/categories', Token.validateToken, categoriesController.getAllCategories);
 app.get('/post', Token.validateToken, postController.getAllPosts);
 app.get('/post/:id', Token.validateToken, postController.getPostId);
+app.post('/post', Token.validateToken, Token.decodeToken, loginError.validatePost,
+loginError.categoryNotFound, postController.createPost);
 
 app.listen(port, () => console.log('ouvindo porta', port));
