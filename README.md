@@ -1,16 +1,14 @@
-# 🚧 README em construção 🚧
+# Project Blogs API 💻
 
-<!-- Olá, Tryber!
+# Contexto
+Uma API RESTful Node.js/Express.js para um sistema de gerenciamento de um Blog, onde é possível criar, ler, atualizar e excluir informações dos usuários e suas postagens em um banco de dados MySQL.
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+Ele usa uma arquitetura model-service-controller.
 
-É essencial que você preencha esse documento por conta própria, ok?
+A validação de dados no lado da solicitação é feita usando a biblioteca JOI.
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+Para realizar a autenticação dos usuários é utilizado o JWT.
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+## Tecnologias usadas
+Back-end:
+> Desenvolvido usando: Node.js, Express.js, Docker, MySQL, Sequelize, JOI, JWT.
